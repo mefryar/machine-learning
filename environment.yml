@@ -1,0 +1,14 @@
+name: MLND
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6
+  - jupyter
+  - matplotlib
+  - nb_conda
+  - pandas
+  - pydocstyle
+  - pylint
+  - scikit-learn
+  - seaborn
