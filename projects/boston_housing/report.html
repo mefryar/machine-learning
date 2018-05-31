@@ -11800,7 +11800,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -11888,39 +11888,26 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Note: The instructions suggest using numpy but I have used pandas</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert DataFrames to Numpy arrays</span>
+<span class="n">prices_np</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">values</span>
 
 <span class="c1"># Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices_np</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 
 <span class="c1"># Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices_np</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 
 <span class="c1"># Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices_np</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
 <span class="c1"># Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices_np</span><span class="p">)</span>
 
 <span class="c1"># Standard deviation of prices of the data</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-
-<span class="c1"># Add summary stats for features</span>
-
-<span class="c1"># Mean and standard deviation of number of rooms</span>
-<span class="n">mean_rooms</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;RM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">std_rooms</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;RM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-
-<span class="c1"># Mean and standard deviation of percentage of working-class neighbors</span>
-<span class="n">mean_lstat</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;LSTAT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">std_lstat</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;LSTAT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-
-<span class="c1"># Mean and standard deviation of pupil-teacher ratio</span>
-<span class="n">mean_ptratio</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;PTRATIO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">std_ptratio</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;PTRATIO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices_np</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="c1"># (Format to two decimal places and add comma separators)</span>
@@ -11930,14 +11917,6 @@ div#notebook {
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean price: $</span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_price</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Median price $</span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">median_price</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard deviation of prices: $</span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_price</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean of rooms: </span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_rooms</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard deviation of rooms: </span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_rooms</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean percentage of working-class neighbors: </span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_lstat</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard deviation percentage of working-class neighbors: </span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_lstat</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean pupil-teacher ratio: </span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_ptratio</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard deviation pupil-teacher ratio: </span><span class="si">{:,.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_ptratio</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -11960,8 +11939,59 @@ Minimum price: $105,000.00
 Maximum price: $1,024,800.00
 Mean price: $454,342.94
 Median price $438,900.00
-Standard deviation of prices: $165,340.28
+Standard deviation of prices: $165,171.13
+</pre>
+</div>
+</div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use Pandas to calculate summary stats for features</span>
+
+<span class="c1"># Mean and standard deviation of number of rooms</span>
+<span class="n">mean_rooms</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;RM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std_rooms</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;RM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="c1"># Mean and standard deviation of percentage of working-class neighbors</span>
+<span class="n">mean_lstat</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;LSTAT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std_lstat</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;LSTAT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="c1"># Mean and standard deviation of pupil-teacher ratio</span>
+<span class="n">mean_ptratio</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;PTRATIO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std_ptratio</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="s1">&#39;PTRATIO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="c1"># Show the calculated statistics</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Statistics for Boston housing dataset features:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean of rooms: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_rooms</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard deviation of rooms: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_rooms</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean percentage of working-class neighbors: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_lstat</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard deviation percentage of working-class neighbors: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_lstat</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean pupil-teacher ratio: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_ptratio</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard deviation pupil-teacher ratio: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_ptratio</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Statistics for Boston housing dataset features:
 
 Mean of rooms: 6.24
 Standard deviation of rooms: 0.64
@@ -12021,6 +12051,8 @@ Standard deviation pupil-teacher ratio: 2.11
 <li>That is, I expect that a neighborhood that has an <code>'PTRATIO'</code> value (ratio of students to teachers) of 15 would have home prices worth <strong>more</strong> than a neighborhood that has an <code>'PTRATIO'</code> value of 20.</li>
 <li><em>All else equal</em>, homebuyers with children are willing to pay more to live in neighborhoods where their children will attend schools with low pupil-teacher ratios. (Homebuyers without children are likely to be indifferent leading to a positive overall impact on price.) This is because of the belief that lower pupil-teacher ratios lead to better educational outcomes, a belief that is supported by a modest base of evidence. (Chingos, Matthew and Grover Whitehurst. 2011. "Class Size: What research says and what it means for state policy." Washington, DC: Brown Center on Education Policy at the Brookings Institution. Retrieved May 21, 2016. <a href="http://www.brookings.edu/research/papers/2011/05/11-class-size-whitehurst-chingos">Source</a>)</li>
 </ul>
+</li>
+<li><p>Note: When talking about correlation, I am specifically refering to Pearson's correlation coefficient, since I am assuming the relationship is linear.</p>
 </li>
 </ul>
 
@@ -12170,8 +12202,12 @@ Standard deviation pupil-teacher ratio: 2.11
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>I would consider this model to have <strong>successfully captured</strong> the variation of the target variable. The R2 score of 0.923 indicates that <strong>92.3% of the variance in the target variable can be explained by the features of the model.</strong></p>
-<p>Although explaining more than 90% of the variation is exceptional, it would help to have additional information in order to determine whether this can be deemed a "success" for the context at hand. It is conceivable that certain applications may require models with even more explanatory power.</p>
+<p>Based on the R2 score, I would consider this model to have <strong>successfully captured</strong> the variation of the target variable.</p>
+<p>The R2 score (also known as the coefficient of determination or $R^2$) measures what proportion of the variation in the target variable is explained by the model's features. That is, R2 score = Explained variation / Total variation.</p>
+<p>Total variation is equal to the "total sum of squares" (SST). This can be calculated by taking the difference between each point and the mean, squaring these differences, and then summing these squares.</p>
+<p>Explained variation can be calculated in two ways. First, as the "sum of squares due to regression" (SSR) which is calculated by taking the difference between each <em>predicted</em> point and the mean, squaring these differences, and then summing these squares. Or, second, as the difference between the total sum of squares and the "sum of squared errors" (SSE) where SSE is calculated by taking the errors (which are the difference between each predicted point and each actual point), squaring each of them, and then summing these squares.</p>
+<p>If a model perfectly predicted the data, it would have an R2 score of 1 since explained variation would be equal to total variation. The model in question is very close to this, with an an R2 score of 0.923. This indicates that <strong>92.3% of the variance in the target variable can be explained by the features of the model.</strong></p>
+<p>Since this is so close to the maximum value, I think it is reasonable to say that the model has successfully captured the variation of the target variable. However, it would help to have additional information in order to determine whether this can be deemed a "success" for the context at hand. It is conceivable that certain applications may require models with even more explanatory power.</p>
 
 </div>
 </div>
@@ -12249,7 +12285,7 @@ Standard deviation pupil-teacher ratio: 2.11
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>Splitting a dataset into training and testing subsets helps to prevent overfitting and underfitting.</p>
+<p>The primary reason for splitting a dataset into training and testing subsets is to allow us to measure the model's ability to generalize to new data by evaluating it's performance on unseen data (namely, the testing set). Splitting in an 80/20 ratio also helps to prevent overfitting and underfitting.</p>
 <p>By reserving 20 percent of the data for the testing set, we make it less likely that the algorithm will overfit. <strong>If too small of a percentage of the data were allocated to the testing set, it would be more likely that the algorithm would fail to accurately predict new data</strong> even if it had learned to predict the training set with a high degree of accuracy.</p>
 <p>By using 80 percent of the data for the training set, we reduce the chances that the algorithm will underfit. <strong>If too small of a percentage of the data were allocated to the training set, it would be more likely that the algorithm would underestimate the complexity of new data</strong> even if it captured the variation in the training set.</p>
 
@@ -12404,8 +12440,8 @@ Think about the pros and cons of adding more training points based on if the tra
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li>When a model is trained with a <strong>maximum depth of 1, it suffers from high bias.</strong> This can be seen in the low score for both training and validation. This indicates the model is overly simplistic. Because it is not picking up the nuances in either the training or the testing data, there is a high degree of bias when the model is applied to each.</li>
-<li>When a model is trained with a <strong>maximum depth of 10, it suffers from high variance.</strong> This is indicated by the fact that it has a very high (near 1.0) training score but a validation score that is not only significantly lower than the training score but actually worse than validation score of simpler models. This suggests that the model has learned to be overly sensitive to variations in the training data that likely represent random noise. As a result, it does not generalize well to new data, resulting in a relatively low validation score and a sizable gap between the training score and the validation score. </li>
+<li>When a model is trained with a <strong>maximum depth of 1, it suffers from high bias.</strong> This can be seen in the low score for both training and validation. This indicates the model is overly simplistic. Because it is not picking up the nuances in either the training or the testing data, there is a high degree of bias when the model is applied to each. Increasing the complexity of the model (in this case, increasing the maximum depth or the number of features) can improve models that suffer from high bias.</li>
+<li>When a model is trained with a <strong>maximum depth of 10, it suffers from high variance.</strong> This is indicated by the fact that it has a very high (near 1.0) training score but a validation score that is not only significantly lower than the training score but actually worse than validation score of simpler models. This suggests that the model has learned to be overly sensitive to variations in the training data that likely represent random noise. As a result, it does not generalize well to new data, resulting in a relatively low validation score and a sizable gap between the training score and the validation score.  Decreasing the complexity of the model (in this case, decreasing the maximum depth or the number of features) can improve models that suffer from high variance.</li>
 </ul>
 
 </div>
