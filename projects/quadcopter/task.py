@@ -28,6 +28,12 @@ class Task():
         self.action_high = 900
         self.action_size = 4
 
+        # Initial pose
+        if init_pose is not None:
+            self.init_pos = init_pose
+        else:
+            self.init_pos = np.array([0., 0., 1.])
+        
         # Goal
         if target_pos is not None:
             self.target_pos = target_pos
@@ -38,20 +44,19 @@ class Task():
         """Uses current pose of sim to return reward."""
         goal = self.target_pos[2]
         current_z = self.sim.pose[2]
-        # Exponentially reward altitude gains
-        reward = 0.33 * ((1 + (goal-current_z)/goal)**2 - 1)
-        # Penalize downward velocity
+        init_z = self.init_pos[2]
+        pct_progress = (current_z - init_z)/(goal - init_z)
+        # Exponential reward for altitude gain
+        reward = (1 + pct_progress)**2
+        # Penalty for floating down
         if self.sim.v[2] < 0:
-            reward -= 0.5
-        # Penalize crashing or timing out
+            reward -= 1
+        # Penalty for crashing or timing out that decreases with progress
         if termination:
-            reward -= 2.
-        # Extra penalty for timing out
-        if self.sim.time > self.runtime:
-            reward -= 5
-        # Give bonus for reaching and exceeding target
+            reward -= 5.*(1 - pct_progress)
+        # Bonus for reaching and exceeding target quickly 
         if reached:
-            reward += 10. + current_z - goal
+            reward += 5. + (current_z-goal) + 2*(self.runtime-self.sim.time)
         return reward
 
     def step(self, rotor_speeds):

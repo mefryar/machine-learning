@@ -1,5 +1,4 @@
 import numpy as np
-from task import Task
 from model import Actor, Critic
 from noise import OUNoise
 from replay_buffer import ReplayBuffer
@@ -48,12 +47,13 @@ class DDPG():
         return state
 
 
-    def step(self, action, reward, next_state, done):
+    def step(self, action, reward, next_state, done, keep_weights):
         # Save experience / reward
         self.memory.add(self.last_state, action, reward, next_state, done)
 
-        # Learn, if enough samples are available in memory
-        if len(self.memory) > self.batch_size:
+        # Learn, if enough samples are available in memory,
+        # unless agent has succeeded on 4 of last 5 episodes
+        if len(self.memory) > self.batch_size and not keep_weights:
             experiences = self.memory.sample()
             self.learn(experiences)
 
